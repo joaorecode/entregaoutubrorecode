@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhar</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow-x: hidden;
+            background: rgb(28, 59, 24);
+            background: linear-gradient(90deg, rgba(28, 59, 24, 0.989233193277311) 0%, rgba(56, 150, 66, 1) 22%, rgba(41, 186, 61, 1) 45%, rgba(53, 194, 27, 1) 99%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container{
+            width: 60%;
+            height: 80%;
+            background-color: lightgreen;
+            box-shadow: 4px 6px 5px #222;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container > h1{
+            color: black;
+            font-size: 35px;
+        }
+
+        .menu{
+            list-style-type: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .buttons{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60%;
+            height: 20%;
+            gap: 20px;   
+        }    
+
+        .editar{
+            width: 30%;
+            height: 60%;
+            background-color: rgb(27, 171, 219);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .excluir{
+            width: 30%;
+            height: 60%;
+            background-color: rgb(207, 47, 47);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Detalhes do Cliente:</h1>
+        <h3 th:text="${cliente.nome}"></h3>
+        <ul class="menu">
+            <li class="menu-item">ID: <span th:text="${cliente.id}"></span></li>
+            <li class="menu-item">Email: <span th:text="${cliente.email}"></span></li>
+            <li class="menu-item">Telefone: <span th:text="${cliente.telefone}"></span></li>
+            <li class="menu-item">Endereço: <span th:text="${cliente.endereco}"></span></li>
+            <li class="menu-item">Senha: <span th:text="${cliente.senha}"></span></li>
+        </ul>
+        <div class="buttons">
+            <a href="" class="editar">Editar</a>
+            <a href="" class="excluir">Excluir</a>
+        </div>
+    </div>
+</body>
+
+</html>

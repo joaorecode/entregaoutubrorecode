@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>Editar</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow-x: hidden;
+            background: rgb(28, 59, 24);
+            background: linear-gradient(90deg, rgba(28, 59, 24, 0.989233193277311) 0%, rgba(56, 150, 66, 1) 22%, rgba(41, 186, 61, 1) 45%, rgba(53, 194, 27, 1) 99%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container{
+            width: 60%;
+            height: 80%;
+            background-color: lightgreen;
+            box-shadow: 4px 6px 5px #222;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .item{
+            width: 80%;
+            height: 40%;
+        }
+
+        .butao{
+            background-color: green;
+            color: white;
+            border: none;
+            width: 80px;
+            height: 30px;
+        }
+
+        .item{
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Editar Clientes</h1>
+        <div class="edit">
+            <form method="post" th:object="${cliente}">
+                <input type="hidden" th:field="*{id}">
+                <div class="item">
+                    <label for="nome">Email</label>
+                    <input type="text" id="email" th:field="*{email}">
+                </div>
+                <div class="item">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" th:field="*{email}">
+                </div>
+                <div class="item">
+                    <label for="nome">Telefone</label>
+                    <input type="text" id="telefone" th:field="*{telefone}">
+                </div>
+                <div class="item">
+                    <label for="nome">Endereço</label>
+                    <input type="text" id="endereco" th:field="*{endereco}">
+                </div>
+                <div class="item">
+                    <label for="nome">Senha</label>
+                    <input type="text" id="senha" th:field="*{senha}">
+                </div>
+                <button type="submit" class="butao">Salvar</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

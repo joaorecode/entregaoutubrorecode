@@ -1,0 +1,79 @@
+-- Geração de Modelo físico
+-- Sql ANSI 2003 - brModelo.
+
+
+
+CREATE TABLE Site (
+
+)
+
+CREATE TABLE Empresa (
+CNPJ CHAR(14) PRIMARY KEY
+)
+
+CREATE TABLE Cliente (
+Cliente_Id VARCHAR(10) PRIMARY KEY,
+Nome VARCHAR(60 ),
+Telefone NUMERIC(12),
+Logradouro VARCHAR(60)
+)
+
+CREATE TABLE Nacionais (
+Data_Ida DATETIME,
+Data_Volta DATETIME,
+Quantidade NUMERIC(10),
+Destino_2_Id VARCHAR(10) PRIMARY KEY,
+Lista_1_Id VARCHAR(10)
+)
+
+CREATE TABLE Lista_1 (
+Lista_1_Id VARCHAR(10) PRIMARY KEY
+)
+
+CREATE TABLE Item (
+Item_id VARCHAR(10) PRIMARY KEY,
+Nome VARCHAR(40),
+Data_Compra DATETIME,
+Valor DECIMAL(9)
+)
+
+CREATE TABLE Internacionais (
+Destino_2_Id VARCHAR(10) PRIMARY KEY,
+Data_Volta DATETIME,
+Data_Ida DATETIME,
+Quantidade NUMERIC(10),
+Lista_2_Id VARCHAR(10)
+)
+
+CREATE TABLE Lista_2 (
+Lista_2_Id VARCHAR(10) PRIMARY KEY
+)
+
+CREATE TABLE Recebe (
+Cliente_Id VARCHAR(10),
+FOREIGN KEY(Cliente_Id) REFERENCES Cliente (Cliente_Id)
+)
+
+CREATE TABLE Compra (
+Item_id VARCHAR(10),
+Cliente_Id VARCHAR(10),
+FOREIGN KEY(Item_id) REFERENCES Item (Item_id),
+FOREIGN KEY(Cliente_Id) REFERENCES Cliente (Cliente_Id)
+)
+
+CREATE TABLE Pertence_1 (
+Lista_1_Id VARCHAR(10),
+Item_id VARCHAR(10),
+FOREIGN KEY(Lista_1_Id) REFERENCES Lista_1 (Lista_1_Id),
+FOREIGN KEY(Item_id) REFERENCES Item (Item_id)
+)
+
+CREATE TABLE Pertence_2 (
+Lista_2_Id VARCHAR(10),
+Item_id VARCHAR(10),
+FOREIGN KEY(Lista_2_Id) REFERENCES Lista_2 (Lista_2_Id),
+FOREIGN KEY(Item_id) REFERENCES Item (Item_id)
+)
+
+ALTER TABLE Nacionais ADD FOREIGN KEY(Lista_1_Id) REFERENCES Lista_1 (Lista_1_Id)
+ALTER TABLE Internacionais ADD FOREIGN KEY(Lista_2_Id) REFERENCES Lista_2 (Lista_2_Id)

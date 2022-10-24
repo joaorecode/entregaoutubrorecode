@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Listar</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow-x: hidden;
+            background: rgb(28, 59, 24);
+            background: linear-gradient(90deg, rgba(28, 59, 24, 0.989233193277311) 0%, rgba(56, 150, 66, 1) 22%, rgba(41, 186, 61, 1) 45%, rgba(53, 194, 27, 1) 99%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container{
+            width: 60%;
+            height: 80%;
+            background-color: lightgreen;
+            box-shadow: 4px 6px 5px #222;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container > h1{
+            color: black;
+            font-size: 35px;
+        }
+
+        .buttons{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60%;
+            height: 20%;
+            gap: 20px;  
+        }    
+
+        .editar{
+            width: 100px;
+            height: 30px;
+            background-color: rgb(27, 171, 219);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            border-radius: 8px;
+        }
+
+        .excluir{
+            width: 100px;
+            height: 30px;
+            background-color: rgb(207, 47, 47);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+	<div class="container">
+		<h1>Listagem de Clientes</h1>
+		<table >
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">E-mail</th>
+					<th scope="col">Nome</th>
+					<th scope="col">Telefone</th>
+					<th scope="col">Endereço</th>
+					<th scope="col">Senha</th>
+				</tr>
+			</thead>
+			<tbody class="menu">
+				<tr th:each="cliente : ${clientes}">
+					<th scope="row" th:text="$cliente.id"></th>
+					<td>
+						<a th:text="${cliente.nome}"></a>
+					</td>
+                    <td th:text="${client.email}"></td>
+                    <td th:text="${client.telefone}"></td>
+                    <td th:text="${client.endereco}"></td>
+                    <td th:text="${client.senha}"></td>
+                    <td style="display: flex; cursor: pointer;">
+                        <a th:href="@{/cliente/{id}/editar" (id=${cliente.id})} class="editar">Editar</a>
+                        <a th:href="@{/cliente/{id}/excluir" (id=${cliente.id})} class="excluir">Excluir</a>
+                    </td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
